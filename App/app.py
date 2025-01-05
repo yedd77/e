@@ -6,7 +6,7 @@ from statsmodels.tsa.arima.model import ARIMA
 app = Flask(__name__)
 
 # Load and prepare data (replace with your dataset path or logic)
-data = pd.read_csv('../waste.csv')
+data = pd.read_csv('waste.csv')
 data['Date'] = data['Month'] + " " + data['Year'].astype(str)
 data['Date'] = pd.to_datetime(data['Date'], format='%b %Y')
 data = data.drop(columns=['Month', 'Year'])
