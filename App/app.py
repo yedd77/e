@@ -24,6 +24,9 @@ model_fit = model.fit()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     prediction = None
+    target_year = None  # Ensure target_year is initialized
+    default_message = "Malaysia Waste Generated Yearly Prediction"
+
     if request.method == 'POST':
         # Get user input from form
         target_year = int(request.form['years'])
@@ -38,11 +41,11 @@ def index():
             try:
                 # Generate prediction
                 forecast = model_fit.forecast(steps=years_ahead)
-                prediction = forecast.iloc[-1]
+                prediction = round(forecast.iloc[-1], 2)  # Limit to 2 decimal places
             except Exception as e:
                 prediction = f"Error: {str(e)}"
 
-    return render_template('index.html', prediction=prediction)
+    return render_template('index.html', prediction=prediction, target_year=target_year, default_message=default_message)
 
 if __name__ == '__main__':
     app.run(debug=True)
