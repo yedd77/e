@@ -1,3 +1,0 @@
-Flask==2.3.2
-pandas==2.2.3
-statsmodel==0.14.0
