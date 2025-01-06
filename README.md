@@ -1,7 +1,7 @@
 ### Installation
 Change directory to App
 ```
-CD App
+cd App
 ```
 
 Install all dependencies required
